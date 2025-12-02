@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Request Custom Quote from Zealous Solutions - Get personalized BPO service pricing for your business">
+    <meta name="keywords" content="BPO quote, call centre pricing, custom quote, business solutions pricing">
+    <title>Request a Quote - Zealous Solutions</title>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="{{ url_for('static', filename='css/styles.css') }}" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" as="style">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <a href="{{ url_for('home') }}" class="nav-brand">
+                    <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="Zealous Solutions" class="logo">
+                    <div class="brand-text">
+                        <h2>ZEALOUS</h2>
+                        <span>SOLUTIONS</span>
+                        <p>Innovating for a Brighter Future</p>
+                    </div>
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="{{ url_for('home') }}" class="nav-link">Home</a></li>
+                    <li><a href="{{ url_for('services') }}" class="nav-link">Services</a></li>
+                    <li><a href="{{ url_for('about') }}" class="nav-link">About</a></li>
+                    <li><a href="{{ url_for('industries') }}" class="nav-link">Industries</a></li>
+                    <li><a href="{{ url_for('contact') }}" class="nav-link">Contact</a></li>
+                    <li><a href="{{ url_for('request_quote') }}" class="nav-link quote-btn futuristic-nav active">
+                        <span>Get Quote</span>
+                        <div class="nav-glow"></div>
+                    </a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="quote-hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">REQUEST A QUOTE</div>
+                <h1>Get Your Custom BPO Solution</h1>
+                <p>Tell us about your business needs and we'll provide a tailored quote within 24 hours.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Form Section -->
+    <section class="quote-form-section">
+        <div class="container">
+            <div class="quote-content">
+                <div class="quote-info">
+                    <h2>Why Choose Our Quote Process?</h2>
+                    <div class="quote-benefits">
+                        <div class="benefit">
+                            <div class="benefit-icon">⚡</div>
+                            <div>
+                                <h4>Fast Response</h4>
+                                <p>Get your personalized quote within 24 hours</p>
+                            </div>
+                        </div>
+                        <div class="benefit">
+                            <div class="benefit-icon">💰</div>
+                            <div>
+                                <h4>Competitive Pricing</h4>
+                                <p>Cost-effective solutions tailored to your budget</p>
+                            </div>
+                        </div>
+                        <div class="benefit">
+                            <div class="benefit-icon">🎯</div>
+                            <div>
+                                <h4>Custom Solutions</h4>
+                                <p>Services designed specifically for your business needs</p>
+                            </div>
+                        </div>
+                        <div class="benefit">
+                            <div class="benefit-icon">🤝</div>
+                            <div>
+                                <h4>No Commitment</h4>
+                                <p>Free consultation with no obligation to purchase</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quote-form-container">
+                    <div class="glass-card">
+                        <form id="quoteForm" class="quote-form" action="{{ url_for('submit_quote') }}" method="POST">
+                            <div class="form-step active" data-step="1">
+                                <h3>Contact Information</h3>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="first_name">First Name *</label>
+                                        <input type="text" id="first_name" name="first_name" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="last_name">Last Name *</label>
+                                        <input type="text" id="last_name" name="last_name" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="email">Email Address *</label>
+                                        <input type="email" id="email" name="email" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phone">Phone Number *</label>
+                                        <input type="tel" id="phone" name="phone" required>
+                                    </div>
+                                </div>
+                                
+                                <button type="button" class="btn btn-primary next-step">Next Step</button>
+                            </div>
+
+                            <div class="form-step" data-step="2">
+                                <h3>Company Details</h3>
+                                <div class="form-group">
+                                    <label for="company">Company Name *</label>
+                                    <input type="text" id="company" name="company" required>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="industry">Industry</label>
+                                        <select id="industry" name="industry">
+                                            <option value="">Select your industry</option>
+                                            <option value="Insurance">Insurance</option>
+                                            <option value="Healthcare">Healthcare</option>
+                                            <option value="Financial Services">Financial Services</option>
+                                            <option value="Real Estate">Real Estate</option>
+                                            <option value="Information Technology">Information Technology</option>
+                                            <option value="E-commerce">E-commerce</option>
+                                            <option value="Education">Education</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="company_size">Company Size</label>
+                                        <select id="company_size" name="company_size">
+                                            <option value="">Select company size</option>
+                                            <option value="1-10">1-10 employees</option>
+                                            <option value="11-50">11-50 employees</option>
+                                            <option value="51-200">51-200 employees</option>
+                                            <option value="201-1000">201-1000 employees</option>
+                                            <option value="1000+">1000+ employees</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-navigation">
+                                    <button type="button" class="btn btn-outline prev-step">Previous</button>
+                                    <button type="button" class="btn btn-primary next-step">Next Step</button>
+                                </div>
+                            </div>
+
+                            <div class="form-step" data-step="3">
+                                <h3>Service Requirements</h3>
+                                <div class="form-group">
+                                    <label for="service">Primary Service Interest *</label>
+                                    <select id="service" name="service" required>
+                                        <option value="">Select a service</option>
+                                        <option value="Inbound Call Center">Inbound Call Center</option>
+                                        <option value="Outbound Call Center">Outbound Call Center</option>
+                                        <option value="Customer Support">Customer Support</option>
+                                        <option value="Lead Generation">Lead Generation</option>
+                                        <option value="Data Entry">Data Entry</option>
+                                        <option value="Virtual Assistant">Virtual Assistant</option>
+                                        <option value="Digital Marketing">Digital Marketing</option>
+                                        <option value="Software Development">Software Development</option>
+                                        <option value="Website Development">Website Development</option>
+                                        <option value="Multiple Services">Multiple Services</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="call_volume">Expected Call Volume (per day)</label>
+                                        <select id="call_volume" name="call_volume">
+                                            <option value="">Select call volume</option>
+                                            <option value="1-50">1-50 calls</option>
+                                            <option value="51-100">51-100 calls</option>
+                                            <option value="101-500">101-500 calls</option>
+                                            <option value="501-1000">501-1000 calls</option>
+                                            <option value="1000+">1000+ calls</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="budget_range">Budget Range (Monthly)</label>
+                                        <select id="budget_range" name="budget_range">
+                                            <option value="">Select budget range</option>
+                                            <option value="$500-$1000">$500 - $1,000</option>
+                                            <option value="$1000-$5000">$1,000 - $5,000</option>
+                                            <option value="$5000-$10000">$5,000 - $10,000</option>
+                                            <option value="$10000-$25000">$10,000 - $25,000</option>
+                                            <option value="$25000+">$25,000+</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-navigation">
+                                    <button type="button" class="btn btn-outline prev-step">Previous</button>
+                                    <button type="button" class="btn btn-primary next-step">Next Step</button>
+                                </div>
+                            </div>
+
+                            <div class="form-step" data-step="4">
+                                <h3>Project Details</h3>
+                                <div class="form-group">
+                                    <label for="timeline">When do you need to start?</label>
+                                    <select id="timeline" name="timeline">
+                                        <option value="">Select timeline</option>
+                                        <option value="Immediately">Immediately</option>
+                                        <option value="Within 1 week">Within 1 week</option>
+                                        <option value="Within 1 month">Within 1 month</option>
+                                        <option value="Within 3 months">Within 3 months</option>
+                                        <option value="Just exploring">Just exploring</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="message">Project Description & Requirements</label>
+                                    <textarea id="message" name="message" rows="5" placeholder="Please describe your project requirements, specific needs, or any questions you have..."></textarea>
+                                </div>
+                                
+                                <div class="form-group checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="newsletter" value="yes">
+                                        <span class="checkmark"></span>
+                                        I'd like to receive updates about Zealous Solutions services
+                                    </label>
+                                </div>
+                                
+                                <div class="form-navigation">
+                                    <button type="button" class="btn btn-outline prev-step">Previous</button>
+                                    <button type="submit" class="btn btn-primary submit-quote">Submit Quote Request</button>
+                                </div>
+                            </div>
+                        </form>
+                        
+                        <!-- Progress Indicator -->
+                        <div class="form-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 25%"></div>
+                            </div>
+                            <div class="progress-steps">
+                                <span class="step active">1</span>
+                                <span class="step">2</span>
+                                <span class="step">3</span>
+                                <span class="step">4</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What Happens Next -->
+    <section class="next-steps">
+        <div class="container">
+            <h2>What Happens Next?</h2>
+            <div class="steps-grid">
+                <div class="step-card glass-card">
+                    <div class="step-number">1</div>
+                    <h3>Review & Analysis</h3>
+                    <p>Our experts analyze your requirements and prepare a customized solution within 24 hours.</p>
+                </div>
+                <div class="step-card glass-card">
+                    <div class="step-number">2</div>
+                    <h3>Consultation Call</h3>
+                    <p>We schedule a call to discuss your needs in detail and answer any questions you may have.</p>
+                </div>
+                <div class="step-card glass-card">
+                    <div class="step-number">3</div>
+                    <h3>Custom Proposal</h3>
+                    <p>Receive a detailed proposal with pricing, timeline, and service specifications.</p>
+                </div>
+                <div class="step-card glass-card">
+                    <div class="step-number">4</div>
+                    <h3>Get Started</h3>
+                    <p>Once approved, we begin implementation and start delivering results for your business.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <svg width="40" height="40" viewBox="0 0 50 50" class="logo-svg">
+                            <defs>
+                                <linearGradient id="footerLogoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#D4AF37;stop-opacity:1" />
+                                    <stop offset="50%" style="stop-color:#E67E22;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#D4AF37;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <circle cx="25" cy="25" r="20" fill="url(#footerLogoGradient)" opacity="0.9"/>
+                            <path d="M15 20 L25 30 L35 15" stroke="white" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span>Zealous Solutions</span>
+                    </div>
+                    <p>Premier BPO services provider delivering exceptional customer support and business solutions worldwide.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="{{ url_for('inbound_services') }}">Inbound Call Center</a></li>
+                        <li><a href="{{ url_for('outbound_services') }}">Outbound Call Center</a></li>
+                        <li><a href="{{ url_for('digital_marketing') }}">Digital Marketing</a></li>
+                        <li><a href="{{ url_for('website_development') }}">Website Development</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Industries</h4>
+                    <ul>
+                        <li><a href="{{ url_for('insurance_industry') }}">Insurance</a></li>
+                        <li><a href="{{ url_for('healthcare_industry') }}">Healthcare</a></li>
+                        <li><a href="{{ url_for('financial_industry') }}">Financial Services</a></li>
+                        <li><a href="{{ url_for('real_estate_industry') }}">Real Estate</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-info">
+                        <p>📧 info@zealous-solutions.com</p>
+                        <p>📱 +92 307 0088630</p>
+                        <p>🌐 www.Z4zealous.com</p>
+                        <p>Working Hours: 24/7</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Zealous Solutions. All Rights Reserved.</p>
+                <div class="footer-links">
+                    <a href="{{ url_for('privacy_policy') }}">Privacy Policy</a>
+                    <a href="{{ url_for('terms_conditions') }}">Terms & Conditions</a>
+                    <a href="{{ url_for('sitemap') }}">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script>
+        // Multi-step form functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const steps = document.querySelectorAll('.form-step');
+            const progressFill = document.querySelector('.progress-fill');
+            const progressSteps = document.querySelectorAll('.progress-steps .step');
+            let currentStep = 1;
+            
+            function showStep(stepNumber) {
+                steps.forEach(step => step.classList.remove('active'));
+                progressSteps.forEach(step => step.classList.remove('active'));
+                
+                document.querySelector(`[data-step="${stepNumber}"]`).classList.add('active');
+                
+                for (let i = 0; i < stepNumber; i++) {
+                    progressSteps[i].classList.add('active');
+                }
+                
+                progressFill.style.width = `${(stepNumber / 4) * 100}%`;
+                currentStep = stepNumber;
+            }
+            
+            document.querySelectorAll('.next-step').forEach(button => {
+                button.addEventListener('click', function() {
+                    if (currentStep < 4) {
+                        showStep(currentStep + 1);
+                    }
+                });
+            });
+            
+            document.querySelectorAll('.prev-step').forEach(button => {
+                button.addEventListener('click', function() {
+                    if (currentStep > 1) {
+                        showStep(currentStep - 1);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

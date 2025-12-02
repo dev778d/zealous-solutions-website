@@ -1,0 +1,24 @@
+# Zealous Solutions - Call Centre Website
+# Flask Backend Requirements
+
+flask==2.3.3
+flask-mail==0.9.1
+flask-sqlalchemy==3.0.5
+flask-wtf==1.1.1
+wtforms==3.0.1
+gunicorn==21.2.0
+python-dotenv==1.0.0
+
+# For production deployment
+whitenoise==6.5.0
+
+# Optional: For database functionality
+psycopg2-binary==2.9.7  # For PostgreSQL
+# OR
+# PyMySQL==1.1.0         # For MySQL
+
+# For email validation
+email-validator==2.0.0
+
+# For environment variables security
+python-decouple==3.8
