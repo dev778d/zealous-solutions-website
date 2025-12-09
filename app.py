@@ -31,15 +31,16 @@ import logging
 app = Flask(__name__)
 
 # Configuration
-app.config['SECRET_KEY'] = 'your-secret-key-here-change-in-production'
+app.config['DEBUG'] = False  # Set to False in production
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'your-secret-key-here-change-in-production')
 
-# Email Configuration (Update with your email provider)
-app.config['MAIL_SERVER'] = 'smtp.gmail.com'  # Change to your email provider
-app.config['MAIL_PORT'] = 587
-app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = 'your-email@gmail.com'  # Your email
-app.config['MAIL_PASSWORD'] = 'your-app-password'     # Your email app password
-app.config['MAIL_DEFAULT_SENDER'] = 'your-email@gmail.com'
+# Email Configuration (Use environment variables in production)
+app.config['MAIL_SERVER'] = os.environ.get('MAIL_SERVER', 'smtp.gmail.com')
+app.config['MAIL_PORT'] = int(os.environ.get('MAIL_PORT', 587))
+app.config['MAIL_USE_TLS'] = os.environ.get('MAIL_USE_TLS', True)
+app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME', 'your-email@gmail.com')
+app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD', 'your-app-password')
+app.config['MAIL_DEFAULT_SENDER'] = os.environ.get('MAIL_DEFAULT_SENDER', 'your-email@gmail.com')
 
 # Initialize extensions
 mail = Mail(app)

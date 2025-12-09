@@ -21,7 +21,7 @@
         <nav class="navbar">
             <div class="container">
                 <a href="{{ url_for('home') }}" class="nav-brand">
-                    <img src="{{ url_for('static', filename='images/logo.svg') }}" alt="Zealous Solutions" class="logo">
+                    <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="Zealous Solutions" class="logo">
                     <div class="brand-text">
                         <h2>ZEALOUS</h2>
                         <span>SOLUTIONS</span>
@@ -85,7 +85,7 @@
                     </div>
                 </div>
                 <div class="hero-image">
-                    <img src="{{ url_for('static', filename='images/hero-image.svg') }}" alt="Call Centre Services">
+                    <img src="{{ url_for('static', filename='images/office-workspace.jpg') }}" alt="Modern Call Centre Workspace">
                 </div>
             </div>
         </div>
@@ -95,7 +95,7 @@
     <section id="about" class="about">
         <div class="container">
             <div class="section-header">
-                <h2>WHO WE ARE — CALL CENTRE SERVICES PROVIDER</h2>
+                <h2>WHO WE ARE - CALL CENTRE SERVICES PROVIDER</h2>
                 <p>Zealous Solutions has been revolutionizing business communications through innovative call centre solutions</p>
             </div>
             <div class="about-content">
@@ -129,7 +129,17 @@
                     </div>
                 </div>
                 <div class="about-image">
-                    <img src="{{ url_for('static', filename='images/about-image.svg') }}" alt="Our Team">
+                    <img src="{{ url_for('static', filename='images/agent-working.jpg') }}" alt="Professional Call Center Agent">
+                    <div class="image-stats">
+                        <div class="stat-item">
+                            <h4>24/7</h4>
+                            <p>Support</p>
+                        </div>
+                        <div class="stat-item">
+                            <h4>99%</h4>
+                            <p>Satisfaction</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -219,7 +229,57 @@
         </div>
     </section>
 
-    <!-- Why Choose Us Section -->
+    <!-- Professional Showcase Section -->
+    <section class="professional-showcase">
+        <div class="container">
+            <div class="showcase-content">
+                <div class="showcase-image">
+                    <img src="{{ url_for('static', filename='images/call-center-floor.jpg') }}" alt="Modern Call Center Operations">
+                    <div class="showcase-overlay">
+                        <div class="overlay-stats">
+                            <div class="overlay-stat">
+                                <h3>500+</h3>
+                                <p>Agents</p>
+                            </div>
+                            <div class="overlay-stat">
+                                <h3>50+</h3>
+                                <p>Clients</p>
+                            </div>
+                            <div class="overlay-stat">
+                                <h3>10M+</h3>
+                                <p>Calls Handled</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="showcase-text">
+                    <h2>State-of-the-Art Call Center Facility</h2>
+                    <p>Our modern call center facility is equipped with cutting-edge technology and designed to deliver exceptional customer experiences. With advanced workstations, noise-cancelling environments, and 24/7 operations capability.</p>
+                    <div class="facility-features">
+                        <div class="feature-point">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Advanced Technology Infrastructure</span>
+                        </div>
+                        <div class="feature-point">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Noise-Controlled Environment</span>
+                        </div>
+                        <div class="feature-point">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Scalable Operations</span>
+                        </div>
+                        <div class="feature-point">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Professional Training Centers</span>
+                        </div>
+                    </div>
+                    <a href="{{ url_for('about') }}" class="btn btn-primary">Learn More About Our Facility</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Section -->
     <section id="why-choose" class="why-choose">
         <div class="container">
             <div class="section-header">
