@@ -61,12 +61,10 @@ def generate_static_site():
                     file_path = os.path.join(output_dir, filename)
                     os.makedirs(os.path.dirname(file_path), exist_ok=True)
                     
-                    # Get HTML content and fix asset paths
+                    # Get HTML content and fix asset paths for GitHub Pages
                     html_content = response.get_data(as_text=True)
                     
-                    # Fix asset paths for GitHub Pages
-                    html_content = html_content.replace('href="styles.css"', 'href="static/css/styles.css"')
-                    html_content = html_content.replace('src="script.js"', 'src="static/js/script.js"')
+                    # Fix asset paths
                     html_content = html_content.replace('href="/static/', 'href="static/')
                     html_content = html_content.replace('src="/static/', 'src="static/')
                     
