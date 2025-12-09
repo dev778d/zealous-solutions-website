@@ -61,9 +61,25 @@ def generate_static_site():
                     file_path = os.path.join(output_dir, filename)
                     os.makedirs(os.path.dirname(file_path), exist_ok=True)
                     
+                    # Get HTML content and fix asset paths
+                    html_content = response.get_data(as_text=True)
+                    
+                    # Fix asset paths for GitHub Pages
+                    html_content = html_content.replace('href="styles.css"', 'href="static/css/styles.css"')
+                    html_content = html_content.replace('src="script.js"', 'src="static/js/script.js"')
+                    html_content = html_content.replace('href="/static/', 'href="static/')
+                    html_content = html_content.replace('src="/static/', 'src="static/')
+                    
+                    # Fix relative paths based on directory depth
+                    depth = filename.count('/')
+                    if depth > 0:
+                        prefix = '../' * depth
+                        html_content = html_content.replace('href="static/', f'href="{prefix}static/')
+                        html_content = html_content.replace('src="static/', f'src="{prefix}static/')
+                    
                     # Write HTML content
                     with open(file_path, 'w', encoding='utf-8') as f:
-                        f.write(response.get_data(as_text=True))
+                        f.write(html_content)
                     print(f"Generated: {filename}")
                 else:
                     print(f"Error generating {filename}: {response.status_code}")
